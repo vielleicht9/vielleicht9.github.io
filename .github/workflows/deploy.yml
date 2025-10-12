@@ -1,14 +1,29 @@
-on: [push]
+name: Deploy to Nekoweb, Neocities, and GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
-    name: deploy2nekoweb
+
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
-        
-      - name: deploy2nekoweb
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install Dependencies and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to Nekoweb
         uses: indiefellas/deploy2nekoweb@main
         with:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
@@ -16,32 +31,7 @@ jobs:
           nekoweb-username: 'pawn'
           directory: 'public'
 
-name: Deploy to neocities
-
-on:
-  push:
-    branches:
-      - main
-
-concurrency:
-  group: deploy-to-neocities
-  cancel-in-progress: true
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-      - name: Install deps and build
-        run: |
-          npm i
-          npm run build
-      - name: Deploy to neocities
+      - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v3
         with:
           api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
