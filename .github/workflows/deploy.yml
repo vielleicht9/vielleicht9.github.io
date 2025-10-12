@@ -24,7 +24,7 @@ jobs:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
           nekoweb-domain: 'vielleicht.lol'
           nekoweb-username: 'pawn'
-          directory: 'public'
+          directory: 'docs'
 
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v3
@@ -33,4 +33,4 @@ jobs:
           cleanup: false
           neocities_supporter: false
           preview_before_deploy: true
-          dist_dir: public
+          dist_dir: docs
