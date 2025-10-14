@@ -1,3 +1,5 @@
+# neocities haters / nekoweb dickriders that also want to host on multiple platforms, snag this!
+
 name: Deploy to Nekoweb, Neocities, and GitHub Pages
 
 on:
@@ -30,7 +32,7 @@ jobs:
         uses: bcomnes/deploy-to-neocities@v3
         with:
           api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
-          cleanup: false
+          cleanup: true
           neocities_supporter: false
           preview_before_deploy: true
           dist_dir: docs
