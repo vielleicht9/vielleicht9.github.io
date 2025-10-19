@@ -8,7 +8,6 @@ body {
 
 .card {
     transform: translateZ(0);
-    background: #110472;
     border-radius: 5px;
     width: 400px;
     margin: auto;
@@ -18,6 +17,7 @@ body {
     position: relative;
     color: #1cc5d1;
     text-shadow: 1px 1px black;
+    background-image: linear-gradient(to top, #110472, transparent);
 }
 
 * {
@@ -53,23 +53,23 @@ hr {
     font-size: 20px;
 }
 
-.card p {
+ .card hr  {
     transform: translateZ(50px);
     display: block;
 }
-
-.card p.related {
-    transform: translateZ(80px);
-    font-style: italic;
+.card .info {
+    transform: translateZ(40px);
 }
 
-.card button {
-    transform: translateZ(1px);
+
+.card .hi {
+    transform: translateZ(100px);
+}
+.card .hi button {
     background-color: #0f0369;
     border: 0;
     color: #1cc5d1;
 }
-
 .marquee-container,
 .real {
     height: 300px;
@@ -86,9 +86,13 @@ hr {
 }
 
 p:hover {
-    color: white
+    color: #68ffff;
+    text-indent: 6px;
+    transition:0.1s
 }
-
+p {
+    transition:0.1s
+}
 @keyframes scrollUp {
     0% {
         transform: translateY(0);
@@ -110,4 +114,7 @@ p:hover {
 
 a {
     color: white
+}
+small a {
+    color:yellow
 }
